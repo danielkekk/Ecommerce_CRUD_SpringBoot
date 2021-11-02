@@ -27,6 +27,7 @@ public class DataLoader implements CommandLineRunner{
         product1.setCategory("BARS");
         product1.setPrice(1.99);
         product1.setAmount(3);
+        product1.setBarcode("1234567891234");
 
         productRepository.save(product1);
 
@@ -37,6 +38,7 @@ public class DataLoader implements CommandLineRunner{
         product2.setCategory("BARS");
         product2.setPrice(2.99);
         product2.setAmount(4);
+        product2.setBarcode("1234567891234");
 
         productRepository.save(product2);
         
