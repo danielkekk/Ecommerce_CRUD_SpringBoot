@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
@@ -25,9 +26,12 @@ public class Product {
 	private String type;
 	@Column(length = 13)
 	private String barcode;
-	private String category;
 	private Double price;
 	private Integer amount;
+	@ManyToOne
+	private Category category;
+	@ManyToOne
+	private Unit unit;
 	@CreatedDate
 	private Date createdAt;
 	@LastModifiedDate
@@ -61,14 +65,14 @@ public class Product {
 		this.description = description;
 	}
 	
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
-	
-	public void setCategory(String category) {
+
+	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
+
 	public Double getPrice() {
 		return price;
 	}
@@ -91,6 +95,14 @@ public class Product {
 
 	public void setAmount(Integer amount) {
 		this.amount = amount;
+	}
+
+	public Unit getUnit() {
+		return unit;
+	}
+
+	public void setUnit(Unit unit) {
+		this.unit = unit;
 	}
 
 	public String getImagePath() {

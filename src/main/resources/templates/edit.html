@@ -35,7 +35,11 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Category:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Category" th:field="*{category}" />
+	                <select th:field="*{category.categoryId}">
+			            <option th:each="categoryobj : ${categories}"
+			                    th:text="${categoryobj.name}"
+			                    th:value="${categoryobj.categoryId}">
+			        </select>
                 </div>
             </div>
             <div class="form-group">
@@ -54,6 +58,16 @@
                 <label class="col-sm-2 control-label">Barcode:</label>
                 <div class="col-sm-10">
                     <input type="number" class="form-control" placeholder="Barcode" th:field="*{barcode}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Unit:</label>
+                <div class="col-sm-10">
+	                <select th:field="*{unit.id}">
+			            <option th:each="unitobj : ${units}"
+			                    th:text="${unitobj.unit}"
+			                    th:value="${unitobj.id}">
+			        </select>
                 </div>
             </div>
             <div class="form-group">
