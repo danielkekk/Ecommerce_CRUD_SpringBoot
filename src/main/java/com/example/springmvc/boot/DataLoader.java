@@ -1,5 +1,7 @@
 package com.example.springmvc.boot;
 
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -35,35 +37,41 @@ public class DataLoader implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		
-		Category category1 = new Category();
+	    
+		/*Category category1 = new Category();
+		category1.setId(1);
 		category1.setName("BARS");
 		categoryRepository.save(category1);
 		
 		Category category2 = new Category();
+		category2.setId(2);
 		category2.setName("DAIRY PRODUCTS");
 		categoryRepository.save(category2);
 		
 		Category category3 = new Category();
+		category3.setId(3);
 		category3.setName("VEGETABLES");
 		categoryRepository.save(category3);
 		
 		Unit unit1 = new Unit();
+		unit1.setId(1);
 		unit1.setName("Kilogram");
 		unit1.setUnit("kg");
 		unitRepository.save(unit1);
 		
 		Unit unit2 = new Unit();
+		unit2.setId(2);
 		unit2.setName("Gram");
 		unit2.setUnit("g");
 		unitRepository.save(unit2);
 		
 		Unit unit3 = new Unit();
+		unit3.setId(3);
 		unit3.setName("Pieces");
 		unit3.setUnit("pcs");
-		unitRepository.save(unit3);
+		unitRepository.save(unit3);*/
 		
-		Product product1 = new Product();
+		/*Product product1 = new Product();
         product1.setName("Milky Bar");
         product1.setDescription("Milky Bar with chocolate and hazelnut");
         product1.setType("CANDIES");
@@ -83,7 +91,7 @@ public class DataLoader implements CommandLineRunner{
         product2.setAmount(4);
         product2.setBarcode("1234567891234");
         product2.setUnit(unit3);
-        productRepository.save(product2);
+        productRepository.save(product2);*/
         
 	}
 }

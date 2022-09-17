@@ -11,7 +11,7 @@ public class Category {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int categoryId;
+	private int id;
 	
 	@Column(nullable = true)
 	private int parentId;
@@ -24,12 +24,12 @@ public class Category {
 		
 	}
 
-	public int getCategoryId() {
-		return categoryId;
+	public int getId() {
+		return id;
 	}
 
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getParentId() {

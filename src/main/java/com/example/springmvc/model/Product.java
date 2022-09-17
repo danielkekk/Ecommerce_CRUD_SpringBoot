@@ -15,21 +15,19 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 public class Product {
-
+    
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="system-uuid")
 	@GenericGenerator(name="system-uuid", strategy="uuid2")
 	private String id;
-	private String name;
-	private String imagePath;
-	private String description;
-	private String type;
-	@Column(length = 13)
-	private String barcode;
-	private Double price;
-	private Integer amount;
 	@ManyToOne
 	private Category category;
+	private String description;
+	private String name;
+	private Integer amount;
+	private String price;
+	@Column(length = 13)
+	private String barcode;
 	@ManyToOne
 	private Unit unit;
 	@CreatedDate
@@ -73,20 +71,12 @@ public class Product {
 		this.category = category;
 	}
 
-	public Double getPrice() {
+	public String getPrice() {
 		return price;
 	}
 	
-	public void setPrice(Double price) {
+	public void setPrice(String price) {
 		this.price = price;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public Integer getAmount() {
@@ -103,14 +93,6 @@ public class Product {
 
 	public void setUnit(Unit unit) {
 		this.unit = unit;
-	}
-
-	public String getImagePath() {
-		return imagePath;
-	}
-
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
 	}
 	
 	public String getBarcode() {

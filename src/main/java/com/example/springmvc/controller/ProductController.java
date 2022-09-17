@@ -82,7 +82,7 @@ public class ProductController {
         	Product foundProduct = productRepository.findById(id).orElse(null);
             productRepository.delete(foundProduct);
         } catch (Exception e) {
-            
+            //TODO
         }
 		
         return "redirect:/products";
