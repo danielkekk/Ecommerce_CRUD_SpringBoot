@@ -2,12 +2,15 @@ package com.example.springmvc.model;
 
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
@@ -22,7 +25,9 @@ public class Product {
 	private String id;
 	@ManyToOne
 	private Category category;
+	@Column(name="description", columnDefinition="TEXT")
 	private String description;
+	private String summary;
 	private String name;
 	private Integer amount;
 	private String price;
@@ -31,8 +36,10 @@ public class Product {
 	@ManyToOne
 	private Unit unit;
 	@CreatedDate
+	@Column(name="created_at", columnDefinition="DATETIME")
 	private Date createdAt;
 	@LastModifiedDate
+	@Column(name="updated_at", columnDefinition="DATETIME")
     private Date updatedAt;
     
 	public Product() {
@@ -61,6 +68,14 @@ public class Product {
 	
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getSummary() {
+		return this.summary;
+	}
+	
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 	
 	public Category getCategory() {
