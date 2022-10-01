@@ -8,4 +8,6 @@ import com.example.springmvc.model.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String> {
 
+	//List<Product> findAll(Pageable pageable);
+	
 }

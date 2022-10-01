@@ -1,11 +1,14 @@
 package com.example.springmvc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.springmvc.model.Product;
 import com.example.springmvc.model.Unit;
@@ -59,9 +62,20 @@ public class ProductController {
 	}
 	
 	@RequestMapping(path="/products", method=RequestMethod.GET)
-	public String getAllProducts(Model model) {
+	public String getAllProducts(@RequestParam(name="page", required=false, 
+	defaultValue="1") Integer page, Model model) {
 		
-		model.addAttribute("products", productRepository.findAll());
+		int itemsPerPage = 10;
+		int currentPage = page.intValue();
+		
+		Pageable currentPageWithElements = PageRequest.of((page.intValue()-1), itemsPerPage);
+		
+		model.addAttribute("products", productRepository.findAll(currentPageWithElements));
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("totalPages", (int)Math.ceil((float)productRepository.count() / (float)itemsPerPage));
+		
+		model.addAttribute("previousPage", (currentPage-1));
+		model.addAttribute("nextPage", (currentPage+1));
 		
 		return "products";
 	}

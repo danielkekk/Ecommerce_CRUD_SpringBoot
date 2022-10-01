@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+          href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"
+          rel="stylesheet" media="screen" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
+</head>
+<body>
+
+<div class="container">
+    <div class="text-center">
+        <nav class="navbar navbar-default">
+            <ul class="pagination">
+            
+            	<li class="page-item disabled" aria-disabled="true" th:if="${currentPage == 1}">
+                    <span class="page-link" aria-hidden="true">&lsaquo;</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:href="@{/products(page=${previousPage})}" rel="prev" th:if="${currentPage != 1}">&lsaquo;</a>
+                </li>
+                
+                <th:block th:each="i : ${#numbers.sequence(1, totalPages)}">
+		            <li th:if="${currentPage == i}" class="page-item active" aria-current="page"><span class="page-link" style="background-color: #777;" th:text="${i}"></span></li>
+                	<li th:if="${currentPage != i}" class="page-item"><a class="page-link" th:href="@{/products(page=${i})}" th:text="${i}"></a></li>
+		        </th:block>
+        
+                <li class="page-item disabled" aria-disabled="true" th:if="${currentPage == totalPages}">
+                    <span class="page-link" aria-hidden="true">&rsaquo;</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:href="@{/products(page=${nextPage})}" rel="prev" th:if="${currentPage != totalPages}">&rsaquo;</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+</body>
+</html>
